@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>KH 10 STUDIO</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #222;
+      color: #fff;
+    }
+
+    header {
+      background-color: #000;
+      color: #f4d03f;
+      text-align: center;
+      padding: 2rem 0;
+    }
+
+    .header-image img {
+      max-width: 220px;
+      height: 140px;
+      object-fit: contain;
+    }
+
+    nav {
+      background-color: #333;
+      display: flex;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .menu-toggle {
+      display: none;
+      color: #f4d03f;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    nav a {
+      color: #f4d03f;
+      margin: 0 15px;
+      text-decoration: none;
+      font-size: 1.2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+    }
+
+    @media screen and (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        background-color: #333;
+        position: absolute;
+        top: 60px;
+        width: 100%;
+        left: 0;
+        padding: 1rem 0;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      nav a {
+        margin: 10px 0;
+      }
+    }
+
+    .container {
+      padding: 2rem;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .section {
+      display: none;
+    }
+
+    .section.active {
+      display: block;
+    }
+
+    .about-section {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+
+    .about-text {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    .image-left, .image-right {
+      max-width: 300px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .image-left img, .image-right img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    }
+
+    .image-left h3, .image-right h3 {
+      margin: 10px 0 0;
+      color: #fff;
+    }
+
+    .image-left p, .image-right p {
+      margin: 5px 0;
+      color: #f4d03f;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+    }
+
+    .project-card {
+      background-color: #333;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+
+    .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+    }
+
+    .project-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .card-text {
+      padding: 15px;
+      color: #f4d03f;
+      text-align: center;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    footer {
+      background-color: #000;
+      color: #ccc;
+      text-align: center;
+      padding: 1rem 0;
+      margin-top: 2rem;
+    }
+
+    footer span {
+      color: gold;
+    }
+
+    .highlight {
+      color: #f4d03f;
+      font-weight: bold;
+    }
+  </style>
+
+  <script>
+    function toggleMenu() {
+      const navLinks = document.querySelector('.nav-links');
+      navLinks.classList.toggle('active');
+    }
+
+    function showSection(id) {
+      const sections = document.querySelectorAll('.section');
+      sections.forEach(s => s.classList.remove('active'));
+      document.querySelector(id).classList.add('active');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', e => {
+          e.preventDefault();
+          const id = link.getAttribute('href');
+          showSection(id);
+          document.querySelector('.nav-links').classList.remove('active');
+        });
+      });
+      showSection('#about');
+    });
+  </script>
+</head>
+
+<body>
+  <header>
+    <div class="header-image">
+      <img src="https://i.pinimg.com/736x/9c/f5/00/9cf500fb2bfd26b968b0d6071d0bd692.jpg" alt="KH 10 Studio Logo">
+    </div>
+  </header>
+
+  <nav>
+    <span class="menu-toggle" onclick="toggleMenu()">&#9776;</span>
+    <div class="nav-links">
+      <a href="#about">About Us</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+      <a href="#apply">Apply</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <!-- ABOUT SECTION -->
+    <section id="about" class="section active">
+      <h2>About Us</h2>
+
+      <div class="about-section">
+        <div class="image-left">
+          <img src="https://i.pinimg.com/736x/38/bf/a2/38bfa2983277f82e72f5dba7fccd6b90.jpg" alt="Founder">
+          <h3>HARSHAL .O. BARWAD</h3>
+          <p>FOUNDER OF STUDIO</p>
+        </div>
+        <div class="about-text">
+          <p><b><strong>Harshal Barwad</strong>, is the passionate creative and ,imagination<br> Founder of KH 10 STUDIO.<br>
+Follow his channel and exclusive content on YouTube: 
+<a href="http://www.youtube.com/@KHSTUDIO10offical" style="color: red; font-weight: bold;">KH 10 STUDIO</a></b>. 
+        </div>
+      </div>
+
+      <div class="about-section">
+        <div class="about-text">
+          <p><b>Krrish Diwase, known as <strong>Krrish Tufani</strong>, is the passionate actor and ,visionary<br> CEO of KH 10 STUDIO.<br>
+Follow his journey and exclusive content on YouTube: 
+<a href="https://youtube.com/@krrishtufani10?si=-fhZpuur8w6q8QmQ" target="_blank" style="color: red; font-weight: bold;">Krrish Tufani</a></b>.
+</p>
+        </div>
+        <div class="image-right">
+          <img src="https://i.pinimg.com/1200x/40/aa/a1/40aaa1a0c4f4df57e5a2c0753a1a4f5c.jpg" alt="CEO">
+          <h3>KRRISH .N. DIWASE</h3>
+          <p>ACTOR & CEO OF STUDIO</p>
+        </div>
+      </div>
+
+      <div class="about-section">
+        <div class="image-left">
+          <img src="https://i.pinimg.com/736x/56/af/7f/56af7f55682ca8061b85863f17106c9a.jpg" alt="Creative Artist">
+          <h3>PUSHKAR .N. GAWANDE</h3>
+          <p>EDITOR OF STUDIO</p>
+        </div>
+        <div class="about-text">
+          <p><b><strong>Pushkar Gawande</strong>, to best work its passion <br> editor of KH 10 STUDIO.<br></b>.
+</p>
+
+        </div>
+      </div>
+     <center>
+     <p style="font-size: 10px;">Founded in 2021 as a status maker in kh editz 10 ,<br> But now these channel was make Entertainments video like Prank video, vlogging video,<br> and so make to a short film as in KH  10 studio. Studio placed at ' NAGPUR CITY ' .<br>
+Total Channel Are managing by our team do perfect work of channel.</p>
+</center>
+    </section>
+
+<section id="projects" class="section">
+  <h2>Our Projects</h2>
+  <div class="project-grid">
+<div class="project-card">
+      <a href="https://youtu.be/NsOtAhwtLVA?si=LwXQ5Vj2g1L2GqbG">
+        <img src="https://i.pinimg.com/736x/c3/a3/1f/c3a31f89066b64fd2709a3aebac1b49f.jpg" alt="LIGHT CAMERA ACTION">
+        <div class="card-text">LIGHT CAMERA ACTION</div>
+      </a>
+    </div>
+
+    
+    <div class="project-card">
+      <a href="https://youtu.be/3zIqV6KVp68" target="_blank">
+        <img src="https://i.pinimg.com/736x/e1/ac/36/e1ac363e7f08b4df65775f9c26cdd48a.jpg" alt="Exploring Shegaon">
+        <div class="card-text">Exploring Shegaon</div>
+      </a>
+    </div>
+    <div class="project-card">
+      <a href="https://youtu.be/GLTdqZN2a3c" target="_blank">
+        <img src="https://i.pinimg.com/736x/d6/15/b7/d615b76cba0c141ad9fcb28f89dc1eab.jpg" alt="Exam Reporter Prank">
+        <div class="card-text">Exam Reporter Prank</div>
+      </a>
+    </div>
+    <div class="project-card">
+      <a href="https://youtu.be/qFxGSkYYojM" target="_blank">
+        <img src="https://i.pinimg.com/736x/8b/ea/88/8bea888426f279c5016a1a218d435c09.jpg" alt="Mission Mangal Rocket Prank">
+        <div class="card-text">Mission Mangal Rocket Prank</div>
+      </a>
+    </div>
+    <div class="project-card">
+      <a href="https://youtu.be/0aNbf_CUgbg" target="_blank">
+        <img src="https://i.pinimg.com/736x/7b/3a/4a/7b3a4a0deb16dcb50614702b7714e263.jpg" alt="Prank Failed">
+        <div class="card-text">Prank Failed</div>
+      </a>
+    </div>
+    <div class="project-card">
+      <a href="https://youtu.be/zOWm7TMZKTc" target="_blank">
+        <img src="https://i.pinimg.com/736x/ca/d1/08/cad10880434094c37c4eb9f102cf3c07.jpg" alt="Raman Science Center Vlog">
+        <div class="card-text">Raman Science Center Vlog</div>
+      </a>
+    </div>
+    <div class="project-card">
+      <a href="https://youtu.be/yYQHaggIypE" target="_blank">
+        <img src="https://i.pinimg.com/736x/85/22/d0/8522d00138bff034d53d5aa585fb82ae.jpg" alt="Shree Ganesh Gandibagh">
+        <div class="card-text">Shree Ganesh Gandibagh</div>
+      </a>
+    </div>
+    <div class="project-card">
+      <a href="https://youtu.be/uJW8jg8ug2w" target="_blank">
+        <img src="https://i.pinimg.com/736x/c1/a5/23/c1a523dc635d02beadcfd4b4344a51c0.jpg" alt="12th Farewell Party Tamase">
+        <div class="card-text">12th Farewell Party Tamase</div>
+      </a>
+    </div>
+    <div class="project-card">
+      <a href="https://youtu.be/85m7u4PLj_M" target="_blank">
+        <img src="https://i.pinimg.com/736x/8f/c3/19/8fc319db92eefaafe2497f9e1ab26e42.jpg" alt="Adasa Tour Vlog">
+        <div class="card-text">Adasa Tour Vlog</div>
+      </a>
+    </div>
+    <div class="project-card">
+      <a href="https://youtu.be/CY4JzuArQkw" target="_blank">
+        <img src="https://i.pinimg.com/736x/d6/54/6f/d6546f96e45cff56db05a8860152a196.jpg" alt="Aaghaaz Freshers 2024 in Tgpcet">
+        <div class="card-text">Aaghaaz Freshers 2024 in Tgpcet</div>
+      </a>
+    </div>
+    <div class="project-card">
+      <a href="https://youtu.be/MBsLEqfHi4k" target="_blank">
+        <img src="https://i.pinimg.com/736x/bc/78/62/bc7862a392c06f25e24c39fc5ab3b217.jpg" alt="Freshers Party Part 2">
+        <div class="card-text">Freshers Party Part 2</div>
+      </a>
+    </div>
+  </div>
+</section>
+<style>
+      /* existing styles */
+      .highlight {
+        color: #f4d03f;
+        font-weight: bold;
+      }
+</style>...
+
+<section id="contact" class="section">
+  <h2>Contact Us</h2>
+  <p>Email: <span class="highlight">kingaming@gmail.com</span></p>
+  <p>Phone: <span class="highlight">+91 9075340677</span></p>
+  <p>Headquarters: <span class="highlight">Nagpur City, Maharashtra, India</span></p>
+</section>
+
+<section id="apply" class="section">
+  <h2>Apply Now</h2>
+  <p>I want a team</p>
+  <p>Fill out the application form and join us:</p>
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLSe-9lVf1H0ZaxTiY-ua6ABOXYU6EDBujCWWyT82AzF7u7eg2w/viewform?usp=sf_link" target="_blank"><span class="highlight">Click Here</span></a>
+</section>
+
+  </div>  <footer>
+    <p>&copy; 2024 <span>KH 10 Studio Pvt Ltd</span>. All rights reserved.</p>
+  </footer>
+</body>
+</html>
